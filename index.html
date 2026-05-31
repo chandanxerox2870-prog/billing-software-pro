@@ -9,6 +9,8 @@
 @media(max-width:900px){.grid,.row,.row3,.metricGrid{grid-template-columns:1fr}.hero,.invTop{display:block}.right{text-align:left}.a4{width:100%;min-height:auto;padding:18px}}
 @media print{body{background:#fff}.brand,.hero,.tabs,.card,.actions,#dashboardSec,#productsSec,#historySec,.lockScreen{display:none!important}.app{max-width:none;padding:0}.invoice{border:0;margin:0;border-radius:0}.a4{width:210mm;min-height:297mm;padding:14mm}}
 </style>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#16a34a">
 </head>
 <body>
 <div id="lockScreen" class="lockScreen">
@@ -83,7 +85,7 @@
 
 <script>
 (function(){
-const API_URL = "https://script.google.com/macros/s/AKfycbzO7m8UjnlwEJtoVucLuoNfxnm3wN_pFiF8IAMfuS-xtbxOENElOvTu0RHnqzkKB6ZxfA/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbyckDph5bHArhBnm8sq_h33fLLD_CZcGTbwgMbA_nnbYbiVodN-EPf-vlHZOinz2MdQ6A/exec";
 function apiCall(params, callback) {
   const cb = "cb_" + Math.random().toString(36).slice(2);
   params.callback = cb;
@@ -153,5 +155,15 @@ function init(){loadBiz();applyLock();$('billDate').value=today();$('invoiceNo')
 init();
 })();
 </script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js')
+      .then(function() { console.log('Service Worker registered'); })
+      .catch(function(err) { console.log('Service Worker registration failed:', err); });
+  });
+}
+</script>
+
 </body>
 </html>
