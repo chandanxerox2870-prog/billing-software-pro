@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>POS Billing Software - Activation Lock</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef2f7;color:#0f172a}.brand{background:#FFD700;color:#000;text-align:center;padding:14px;font-size:22px;font-weight:800;box-shadow:0 2px 6px #0002}.brand span{font-size:15px}.app{max-width:1280px;margin:auto;padding:16px}.hero{background:linear-gradient(135deg,#0f766e,#2563eb);color:#fff;border-radius:20px;padding:20px;display:flex;justify-content:space-between;gap:12px;align-items:center;box-shadow:0 10px 25px #0002}.hero h1{margin:0;font-size:28px}.hero p{margin:6px 0 0}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.btn,button{border:0;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer;background:#2563eb;color:#fff}.green{background:#16a34a!important}.red{background:#dc2626!important}.gray{background:#475569!important}.orange{background:#ea580c!important}.tab{background:#fff;color:#111;border:1px solid #cbd5e1}.active{background:#0f766e!important;color:#fff}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.full{grid-column:1/-1}.card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:16px;box-shadow:0 8px 20px #0001}.card h2{margin:0 0 12px;font-size:20px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}label{display:block;font-size:13px;font-weight:700;margin:0 0 5px;color:#334155}input,textarea,select{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;background:#fff}textarea{min-height:68px}table{width:100%;border-collapse:collapse;background:#fff}th,td{border-bottom:1px solid #e5e7eb;padding:9px;text-align:left;font-size:14px}th{background:#f1f5f9}.tableWrap{overflow:auto}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.metricGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric{background:#f8fafc;border:1px solid #e2e8f0;border-radius:15px;padding:14px}.metric b{display:block;font-size:24px;margin-top:6px}.invoice{background:#fff;margin-top:16px;padding:0;border-radius:14px;border:1px solid #e5e7eb;overflow:auto}.a4{width:210mm;min-height:297mm;background:#fff;margin:auto;padding:16mm;color:#111}.invTop{display:flex;justify-content:space-between;border-bottom:3px solid #111;padding-bottom:12px;gap:12px}.invTop h1{margin:0;font-size:26px}.right{text-align:right}.small{font-size:13px;color:#475569}.invBox{border:1px solid #111;padding:10px;margin:12px 0;border-radius:8px}.sign{display:flex;justify-content:space-between;margin-top:35px}.hidden{display:none!important}.low{color:#dc2626;font-weight:bold}.locked{background:#e5e7eb!important;cursor:not-allowed}.lockScreen{position:fixed;inset:0;background:linear-gradient(135deg,#0f172a,#0f766e);z-index:9999;display:flex;align-items:center;justify-content:center;padding:18px}.lockBox{max-width:460px;width:100%;background:#fff;border-radius:22px;padding:22px;box-shadow:0 20px 60px #0006}.lockBox h1{margin:0 0 8px}.lockBox p{color:#475569}
+@media(max-width:900px){.grid,.row,.row3,.metricGrid{grid-template-columns:1fr}.hero,.invTop{display:block}.right{text-align:left}.a4{width:100%;min-height:auto;padding:18px}}
+@media print{body{background:#fff}.brand,.hero,.tabs,.card,.actions,#dashboardSec,#productsSec,#historySec,.lockScreen{display:none!important}.app{max-width:none;padding:0}.invoice{border:0;margin:0;border-radius:0}.a4{width:210mm;min-height:297mm;padding:14mm}}
+</style>
+</head>
+<body>
+<div id="lockScreen" class="lockScreen">
+ <div class="lockBox">
+  <h1>🔐 Activate Billing Software</h1>
+  <p>Business Name, Mobile এবং 1-time Activation Key দিন। Activate করার পর Business Name lock হবে।</p>
+  <label>Business Name</label><input id="actBiz" placeholder="Example: Rahul Mobile Store"><br><br>
+  <label>Owner Mobile</label><input id="actMob" placeholder="10 digit mobile"><br><br>
+  <label>Activation Key</label><input id="actKey" placeholder="Example: CHANDAN-1001">
+  <div class="actions"><button class="green" id="activateBtn">Activate Now</button></div>
+  <p class="small">Activation Key-এর জন্য Digital Agency by Chandan Das-এর সাথে যোগাযোগ করুন। Internet চালু থাকতে হবে।</p>
+ </div>
+</div>
+
+<div class="brand">🚀 Powered by Digital Agency by Chandan Das<br><span>📞 9735474770</span></div>
+<div class="app">
+ <div class="hero"><div><h1>🧾 Professional POS Billing Software</h1><p>Product Database • Sales Dashboard • A4 Invoice • Excel Export • WhatsApp Share</p></div><button class="green" id="newBillTop">+ New Bill</button></div>
+ <div class="tabs">
+  <button class="tab active" data-tab="billing">Billing</button><button class="tab" data-tab="products">📦 Product Database</button><button class="tab" data-tab="dashboard">📊 Sales Dashboard</button><button class="tab" data-tab="history">Saved Bills</button>
+ </div>
+
+ <section id="billingSec">
+  <div class="grid">
+   <div class="card"><h2>Business / Shop Details</h2>
+    <div class="row"><div><label>Shop Name</label><input id="bizName" class="locked" readonly></div><div><label>Mobile</label><input id="bizMobile" class="locked" readonly></div></div><br>
+    <label>Address</label><textarea id="bizAddress" placeholder="Shop Address"></textarea>
+    <div class="row"><div><label>GSTIN / Trade No.</label><input id="bizGst" placeholder="Optional"></div><div><label>Invoice No.</label><input id="invoiceNo"></div></div>
+    <div class="invBox"><b>License Status:</b><br><span id="licenseStatus">Not Activated</span></div>
+   </div>
+   <div class="card"><h2>Customer Details</h2>
+    <div class="row"><div><label>Customer Name</label><input id="custName"></div><div><label>Customer Mobile</label><input id="custMobile"></div></div><br>
+    <label>Customer Address</label><textarea id="custAddress"></textarea>
+    <div class="row"><div><label>Date</label><input type="date" id="billDate"></div><div><label>Payment Mode</label><select id="paymentMode"><option>Cash</option><option>UPI</option><option>Card</option><option>Bank Transfer</option><option>Due</option></select></div></div>
+   </div>
+   <div class="card full"><h2>Billing Items</h2>
+    <div class="row"><div><label>Search Product</label><input id="productSearch" list="productList" placeholder="Product name/code"><datalist id="productList"></datalist></div><div style="padding-top:22px"><button id="addSelectedProduct">+ Add Selected Product</button></div></div>
+    <div class="tableWrap"><table><thead><tr><th>Item</th><th>Qty</th><th>Rate</th><th>Tax %</th><th>Total</th><th>Remove</th></tr></thead><tbody id="itemsBody"></tbody></table></div>
+    <div class="actions"><button id="addManualItem">+ Manual Item</button></div>
+   </div>
+   <div class="card"><h2>Discount / Paid</h2>
+    <div class="row"><div><label>Discount ₹</label><input type="number" id="discount" value="0"></div><div><label>Paid ₹</label><input type="number" id="paid" value="0"></div></div><br>
+    <label>Note</label><textarea id="note"></textarea>
+   </div>
+   <div class="card"><h2>Bill Summary</h2>
+    <div class="metricGrid"><div class="metric">Subtotal <b id="subtotal">₹0</b></div><div class="metric">Tax <b id="taxTotal">₹0</b></div><div class="metric">Grand Total <b id="grandTotal">₹0</b></div><div class="metric">Due <b id="dueAmount">₹0</b></div></div>
+    <div class="actions"><button id="liveBtn">Live Generate Bill</button><button class="green" id="saveBillBtn">Save Bill</button><button class="orange" id="printBtn">Print / PDF</button><button class="green" id="waBtn">WhatsApp Share</button></div>
+   </div>
+  </div>
+  <div class="invoice" id="invoicePreview"><div class="a4">
+   <div class="invTop"><div><h1 id="pBizName">Business Name</h1><div id="pBizAddress"></div><div id="pBizMobile"></div><div id="pBizGst"></div></div><div class="right"><h1>INVOICE</h1><div id="pInvoiceNo"></div><div id="pDate"></div><div id="pPayment"></div></div></div>
+   <div class="invBox"><b>Bill To:</b><br><span id="pCustName"></span><br><span id="pCustMobile"></span><br><span id="pCustAddress"></span></div>
+   <table><thead><tr><th>Item</th><th>Qty</th><th>Rate</th><th>Tax</th><th>Total</th></tr></thead><tbody id="pItems"></tbody></table>
+   <div class="right" style="margin-top:15px"><p>Subtotal: <b id="pSubtotal">₹0</b></p><p>Tax: <b id="pTaxTotal">₹0</b></p><p>Discount: <b id="pDiscount">₹0</b></p><h2>Grand Total: <span id="pGrandTotal">₹0</span></h2><p>Paid: <b id="pPaid">₹0</b> | Due: <b id="pDue">₹0</b></p></div>
+   <p><b>Note:</b> <span id="pNote"></span></p><div class="sign"><div>Customer Signature</div><div>Authorized Signature</div></div><p class="small right">Thank you for your business.</p>
+  </div></div>
+ </section>
+
+ <section id="productsSec" class="hidden"><div class="card"><h2>📦 Product Database</h2>
+  <div class="row3"><div><label>Product Name</label><input id="prodName"></div><div><label>Code / SKU</label><input id="prodCode"></div><div><label>Category</label><input id="prodCat"></div></div><br>
+  <div class="row3"><div><label>Purchase Price</label><input type="number" id="prodBuy" value="0"></div><div><label>Selling Price</label><input type="number" id="prodSell" value="0"></div><div><label>Stock Qty</label><input type="number" id="prodStock" value="0"></div></div>
+  <div class="actions"><button class="green" id="saveProductBtn">Save Product</button><button class="gray" id="exportProducts">Export Products CSV</button></div>
+  <div class="tableWrap"><table><thead><tr><th>Name</th><th>Code</th><th>Category</th><th>Buy</th><th>Sell</th><th>Stock</th><th>Action</th></tr></thead><tbody id="productRows"></tbody></table></div>
+ </div></section>
+
+ <section id="dashboardSec" class="hidden"><div class="card"><h2>📊 Sales Report Dashboard</h2>
+  <div class="metricGrid"><div class="metric">Today Sales <b id="todaySales">₹0</b></div><div class="metric">Monthly Sales <b id="monthSales">₹0</b></div><div class="metric">Total Bills <b id="totalBills">0</b></div><div class="metric">Total Due <b id="totalDue">₹0</b></div></div>
+  <div class="actions"><button class="gray" id="exportSales">Export Sales CSV / Excel</button><button id="refreshDash">Refresh</button></div><h3>Top Selling Products</h3><div id="topProducts"></div>
+ </div></section>
+
+ <section id="historySec" class="hidden"><div class="card"><h2>Saved Bills</h2><div id="billHistory"></div></div></section>
+</div>
+
+<script>
+(function(){
+const API_URL = "https://script.google.com/macros/s/AKfycbzO7m8UjnlwEJtoVucLuoNfxnm3wN_pFiF8IAMfuS-xtbxOENElOvTu0RHnqzkKB6ZxfA/exec";
+function apiCall(params, callback) {
+  const cb = "cb_" + Math.random().toString(36).slice(2);
+  params.callback = cb;
+  let script = document.createElement("script");
+  window[cb] = function(res) {
+    try { callback(res); } finally { delete window[cb]; if (script && script.parentNode) script.parentNode.removeChild(script); }
+  };
+  const query = Object.keys(params).map(k => encodeURIComponent(k) + "=" + encodeURIComponent(params[k])).join("&");
+  script.src = API_URL + "?" + query;
+  script.onerror = function() { alert("Activation server connect হচ্ছে না। Internet/API check করুন।"); };
+  document.body.appendChild(script);
+}
+
+'use strict';
+const $=id=>document.getElementById(id);
+const rupee=n=>'₹'+(Number(n)||0).toFixed(2);
+const today=()=>new Date().toISOString().slice(0,10);
+
+let bills=JSON.parse(localStorage.getItem('pos_bills_working')||'[]');
+let products=JSON.parse(localStorage.getItem('pos_products_working')||'[]');
+let editIndex=null;
+function act(){return JSON.parse(localStorage.getItem('pos_activation_working')||'null')}
+function usedKeys(){return JSON.parse(localStorage.getItem('pos_used_keys_working')||'[]')}
+function saveUsed(k){const u=usedKeys();if(!u.includes(k))u.push(k);localStorage.setItem('pos_used_keys_working',JSON.stringify(u))}
+function activate(){
+ const b=$('actBiz').value.trim(),m=$('actMob').value.trim(),k=$('actKey').value.trim().toUpperCase();
+ if(!b)return alert('Business Name দিন');
+ if(m.replace(/\D/g,'').length<10)return alert('সঠিক Mobile দিন');
+ if(!k)return alert('Activation Key দিন');
+ const btn=$('activateBtn');
+ if(btn){btn.disabled=true;btn.innerText='Checking...';}
+ apiCall({action:'verifyKey',key:k,businessName:b,mobile:m}, function(res){
+   if(btn){btn.disabled=false;btn.innerText='Activate Now';}
+   if(!res.success){ alert(res.message || 'Invalid Activation Key'); return; }
+   const data={businessName:b,mobile:m,key:k,time:new Date().toLocaleString()};
+   localStorage.setItem('pos_activation_working',JSON.stringify(data));
+   applyLock();
+   calc();
+   alert('Activated Successfully');
+ });
+}
+function applyLock(){const a=act();if(!a){$('lockScreen').style.display='flex';return}$('lockScreen').style.display='none';$('bizName').value=a.businessName;$('bizMobile').value=a.mobile;$('bizName').readOnly=true;$('bizMobile').readOnly=true;$('licenseStatus').innerHTML='✅ Activated<br>Registered To: <b>'+a.businessName+'</b><br>Mobile: <b>'+a.mobile+'</b><br>License: <b>'+a.key+'</b><br>Activated: '+a.time}
+function saveBiz(){localStorage.setItem('bizAddress',$('bizAddress').value);localStorage.setItem('bizGst',$('bizGst').value)}
+function loadBiz(){$('bizAddress').value=localStorage.getItem('bizAddress')||'';$('bizGst').value=localStorage.getItem('bizGst')||''}
+function addItem(it={name:'',code:'',qty:1,rate:0,tax:0}){const tr=document.createElement('tr');tr.innerHTML='<td><input class="iName" value="'+(it.name||'')+'"><input type="hidden" class="iCode" value="'+(it.code||'')+'"></td><td><input type="number" class="iQty" value="'+(it.qty||1)+'"></td><td><input type="number" class="iRate" value="'+(it.rate||0)+'"></td><td><input type="number" class="iTax" value="'+(it.tax||0)+'"></td><td class="iTotal">₹0</td><td><button class="red removeItem">X</button></td>';$('itemsBody').appendChild(tr);calc()}
+function getItems(){return Array.from($('itemsBody').querySelectorAll('tr')).map(tr=>({name:tr.querySelector('.iName').value,code:tr.querySelector('.iCode').value,qty:Number(tr.querySelector('.iQty').value)||0,rate:Number(tr.querySelector('.iRate').value)||0,tax:Number(tr.querySelector('.iTax').value)||0}))}
+function calc(){saveBiz();let sub=0,tax=0;Array.from($('itemsBody').querySelectorAll('tr')).forEach((tr,i)=>{const it=getItems()[i],base=it.qty*it.rate,t=base*it.tax/100;sub+=base;tax+=t;tr.querySelector('.iTotal').innerText=rupee(base+t)});const disc=Number($('discount').value)||0,paid=Number($('paid').value)||0,grand=Math.max(0,sub+tax-disc),due=Math.max(0,grand-paid);$('subtotal').innerText=$('pSubtotal').innerText=rupee(sub);$('taxTotal').innerText=$('pTaxTotal').innerText=rupee(tax);$('grandTotal').innerText=$('pGrandTotal').innerText=rupee(grand);$('dueAmount').innerText=$('pDue').innerText=rupee(due);$('pDiscount').innerText=rupee(disc);$('pPaid').innerText=rupee(paid);preview()}
+function preview(){const a=act()||{};$('pBizName').innerText=a.businessName||$('bizName').value||'Business Name';$('pBizAddress').innerText=$('bizAddress').value;$('pBizMobile').innerText=(a.mobile||$('bizMobile').value)?'Mobile: '+(a.mobile||$('bizMobile').value):'';$('pBizGst').innerText=$('bizGst').value?'GSTIN: '+$('bizGst').value:'';$('pInvoiceNo').innerText='Invoice No: '+$('invoiceNo').value;$('pDate').innerText='Date: '+$('billDate').value;$('pPayment').innerText='Payment: '+$('paymentMode').value;$('pCustName').innerText=$('custName').value;$('pCustMobile').innerText=$('custMobile').value?'Mobile: '+$('custMobile').value:'';$('pCustAddress').innerText=$('custAddress').value;$('pNote').innerText=$('note').value;$('pItems').innerHTML=getItems().map(it=>{const base=it.qty*it.rate,t=base*it.tax/100;return '<tr><td>'+it.name+'</td><td>'+it.qty+'</td><td>'+rupee(it.rate)+'</td><td>'+rupee(t)+' ('+it.tax+'%)</td><td>'+rupee(base+t)+'</td></tr>'}).join('')}
+function billObj(){calc();return {invoiceNo:$('invoiceNo').value,billDate:$('billDate').value,paymentMode:$('paymentMode').value,custName:$('custName').value,custMobile:$('custMobile').value,custAddress:$('custAddress').value,items:getItems(),subtotal:num($('pSubtotal')),tax:num($('pTaxTotal')),discount:Number($('discount').value)||0,grand:num($('pGrandTotal')),paid:Number($('paid').value)||0,due:num($('pDue')),note:$('note').value,bizName:$('pBizName').innerText,bizMobile:$('pBizMobile').innerText,bizAddress:$('bizAddress').value}}
+function num(el){return Number((el.innerText||'0').replace(/[₹,]/g,''))||0}
+function saveBill(){const b=billObj();if(!b.custName)return alert('Customer name দিন');bills.unshift(b);localStorage.setItem('pos_bills_working',JSON.stringify(bills));reduceStock(b.items);renderHistory();dashboard();alert('Bill saved')}
+function reduceStock(items){items.forEach(it=>{const p=products.find(x=>x.code&&x.code===it.code);if(p)p.stock=Math.max(0,(Number(p.stock)||0)-it.qty)});saveProducts()}
+function newBill(){['custName','custMobile','custAddress','note'].forEach(id=>$(id).value='');$('discount').value=0;$('paid').value=0;$('invoiceNo').value='INV-'+Date.now().toString().slice(-6);$('billDate').value=today();$('itemsBody').innerHTML='';addItem();calc()}
+function shareWhatsApp(){const b=billObj();const lines=b.items.map((it,i)=>(i+1)+'. '+it.name+' Qty:'+it.qty+' Rate:'+rupee(it.rate)).join('\n');const msg='🧾 INVOICE\n'+b.bizName+'\n'+b.bizAddress+'\n'+b.bizMobile+'\n\nInvoice: '+b.invoiceNo+'\nDate: '+b.billDate+'\n\nBill To: '+b.custName+'\nMobile: '+b.custMobile+'\n\nItems:\n'+lines+'\n\nGrand Total: '+rupee(b.grand)+'\nPaid: '+rupee(b.paid)+'\nDue: '+rupee(b.due)+'\n\nThank you.';let ph=(b.custMobile||'').replace(/\D/g,'');if(ph.length===10)ph='91'+ph;window.open((ph?'https://wa.me/'+ph+'?text=':'https://wa.me/?text=')+encodeURIComponent(msg),'_blank')}
+function saveProducts(){localStorage.setItem('pos_products_working',JSON.stringify(products));renderProducts();refreshList()}
+function saveProduct(){const p={name:$('prodName').value.trim(),code:$('prodCode').value.trim(),cat:$('prodCat').value.trim(),buy:Number($('prodBuy').value)||0,sell:Number($('prodSell').value)||0,stock:Number($('prodStock').value)||0};if(!p.name)return alert('Product name দিন');if(editIndex===null)products.unshift(p);else{products[editIndex]=p;editIndex=null}['prodName','prodCode','prodCat'].forEach(id=>$(id).value='');$('prodBuy').value=0;$('prodSell').value=0;$('prodStock').value=0;saveProducts()}
+function renderProducts(){$('productRows').innerHTML=products.map((p,i)=>'<tr><td>'+p.name+'</td><td>'+p.code+'</td><td>'+p.cat+'</td><td>'+rupee(p.buy)+'</td><td>'+rupee(p.sell)+'</td><td class="'+(p.stock<=3?'low':'')+'">'+p.stock+'</td><td><button data-edit="'+i+'">Edit</button> <button class="red" data-del="'+i+'">Delete</button></td></tr>').join('')||'<tr><td colspan="7">No products</td></tr>'}
+function refreshList(){$('productList').innerHTML=products.map(p=>'<option value="'+p.name+' | '+p.code+' | ₹'+p.sell+'">').join('')}
+function addSelectedProduct(){const q=$('productSearch').value.split('|')[0].trim();const p=products.find(x=>x.name===q||x.code===q);if(!p)return alert('Product select করুন');addItem({name:p.name,code:p.code,qty:1,rate:p.sell,tax:0});$('productSearch').value=''}
+function dashboard(){const t=today(),m=t.slice(0,7);let td=0,mo=0,due=0,sold={};bills.forEach(b=>{if(b.billDate===t)td+=b.grand;if((b.billDate||'').slice(0,7)===m)mo+=b.grand;due+=b.due;(b.items||[]).forEach(it=>sold[it.name]=(sold[it.name]||0)+it.qty)});$('todaySales').innerText=rupee(td);$('monthSales').innerText=rupee(mo);$('totalBills').innerText=bills.length;$('totalDue').innerText=rupee(due);$('topProducts').innerHTML=Object.entries(sold).sort((a,b)=>b[1]-a[1]).slice(0,5).map(x=>'<div class="invBox">'+x[0]+' — Sold Qty: <b>'+x[1]+'</b></div>').join('')||'No sales yet'}
+function renderHistory(){$('billHistory').innerHTML=bills.map((b,i)=>'<div class="invBox"><b>'+b.invoiceNo+'</b> - '+b.custName+'<br>'+b.billDate+' | '+b.paymentMode+' | '+rupee(b.grand)+' | Due '+rupee(b.due)+'<div class="actions"><button data-open="'+i+'">Open</button><button class="red" data-bdel="'+i+'">Delete</button></div></div>').join('')||'No saved bill'}
+function exportCSV(type){const rows=type==='products'?[['Name','Code','Category','Purchase','Selling','Stock'],...products.map(p=>[p.name,p.code,p.cat,p.buy,p.sell,p.stock])]:[['Invoice','Date','Customer','Mobile','Payment','Subtotal','Tax','Discount','Grand','Paid','Due'],...bills.map(b=>[b.invoiceNo,b.billDate,b.custName,b.custMobile,b.paymentMode,b.subtotal,b.tax,b.discount,b.grand,b.paid,b.due])];const csv=rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download=(type==='products'?'products':'sales-report')+'.csv';a.click()}
+function switchTab(t){['billing','products','dashboard','history'].forEach(x=>$(x+'Sec').classList.toggle('hidden',x!==t));document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));if(t==='products')renderProducts();if(t==='dashboard')dashboard();if(t==='history')renderHistory()}
+document.addEventListener('click',e=>{const id=e.target.id;if(id==='activateBtn')activate();if(id==='newBillTop')newBill();if(id==='addManualItem')addItem();if(id==='addSelectedProduct')addSelectedProduct();if(id==='liveBtn')calc();if(id==='saveBillBtn')saveBill();if(id==='printBtn'){calc();window.print()}if(id==='waBtn')shareWhatsApp();if(id==='saveProductBtn')saveProduct();if(id==='exportProducts')exportCSV('products');if(id==='exportSales')exportCSV('sales');if(id==='refreshDash')dashboard();if(e.target.classList.contains('removeItem')){e.target.closest('tr').remove();calc()}if(e.target.dataset.tab)switchTab(e.target.dataset.tab);if(e.target.dataset.edit!==undefined){const i=Number(e.target.dataset.edit),p=products[i];editIndex=i;$('prodName').value=p.name;$('prodCode').value=p.code;$('prodCat').value=p.cat;$('prodBuy').value=p.buy;$('prodSell').value=p.sell;$('prodStock').value=p.stock}if(e.target.dataset.del!==undefined){products.splice(Number(e.target.dataset.del),1);saveProducts()}if(e.target.dataset.bdel!==undefined){bills.splice(Number(e.target.dataset.bdel),1);localStorage.setItem('pos_bills_working',JSON.stringify(bills));renderHistory();dashboard()}if(e.target.dataset.open!==undefined){const b=bills[Number(e.target.dataset.open)];['invoiceNo','billDate','paymentMode','custName','custMobile','custAddress','discount','paid','note'].forEach(k=>{if($(k))$(k).value=b[k]??''});$('itemsBody').innerHTML='';(b.items||[]).forEach(addItem);switchTab('billing');calc()}});
+document.addEventListener('input',e=>{if(!['actBiz','actMob','actKey'].includes(e.target.id))calc()});
+function init(){loadBiz();applyLock();$('billDate').value=today();$('invoiceNo').value='INV-'+Date.now().toString().slice(-6);addItem();renderProducts();renderHistory();refreshList();dashboard();calc()}
+init();
+})();
+</script>
+</body>
+</html>
